@@ -1,0 +1,20 @@
+---
+configuration: # Here you define your locales and mocks
+    locale: ja-JP
+
+--- # Three dashes start a new YAML document
+- test: "Launch request, no further interaction."
+- LaunchRequest: # LaunchRequest is not an utterance but a request type
+    - response.outputSpeech.ssml: <speak>ようこそ。こんにちは、または、ヘルプ、と言ってみてください。どうぞ！</speak>
+       
+--- 
+- test: "Sequence 03. Test scenario: AMAZON.HelpIntent. Ask for help and exit."
+- LaunchRequest: # LaunchRequest is not an utterance but a request type
+- help: # This is what we want to test in this sequence
+  - response.outputSpeech.ssml: <speak>こんにちは、と言ってみてください。どうぞ！</speak>
+  - response.card: undefined
+  - response.reprompt.outputSpeech.ssml: <speak>こんにちは、と言ってみてください。どうぞ！</speak>
+- AMAZON.HelpIntent:
+  - response.outputSpeech.ssml: <speak>こんにちは、と言ってみてください。どうぞ！</speak>
+- HelloWorldIntent:
+  - response.outputSpeech.ssml: <speak>ハローワールド</speak>
