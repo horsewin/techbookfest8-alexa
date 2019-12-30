@@ -1,0 +1,10 @@
+{
+  "skillId": "amzn1.ask.skill.d098d7de-a611-48fc-808d-be35138e0d1e",
+  "locale": "ja-JP",
+  "type": "text",
+  "userInput": [
+    "アレクサ、エキスパート本を開いて",
+    "ヘルプ",
+    "ありがとう"
+  ]
+}
