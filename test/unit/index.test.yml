@@ -1,20 +1,19 @@
 ---
-configuration: # Here you define your locales and mocks
+configuration: # 言語設定やモック設定など。日本語スキルなのでja-JPを指定。
     locale: ja-JP
 
---- # Three dashes start a new YAML document
-- test: "Launch request, no further interaction."
-- LaunchRequest: # LaunchRequest is not an utterance but a request type
-    - response.outputSpeech.ssml: <speak>ようこそ。こんにちは、または、ヘルプ、と言ってみてください。どうぞ！</speak>
+--- # 「---」で始めるのがルール
+- test: "LaunchRequestのみ"
+- LaunchRequest:
+    - response.outputSpeech.ssml: <speak>ようこそ。技術書典8のためのテストスキルです。技術書典、または、ヘルプ、と言ってみてください。どうぞ！</speak>
        
 --- 
-- test: "Sequence 03. Test scenario: AMAZON.HelpIntent. Ask for help and exit."
-- LaunchRequest: # LaunchRequest is not an utterance but a request type
-- help: # This is what we want to test in this sequence
-  - response.outputSpeech.ssml: <speak>こんにちは、と言ってみてください。どうぞ！</speak>
-  - response.card: undefined
-  - response.reprompt.outputSpeech.ssml: <speak>こんにちは、と言ってみてください。どうぞ！</speak>
-- AMAZON.HelpIntent:
-  - response.outputSpeech.ssml: <speak>こんにちは、と言ってみてください。どうぞ！</speak>
+- test: "テスト１. シナリオ: AMAZON.HelpIntent"
+- LaunchRequest: # このリクエストへの検証不要な場合、このように記述する
+- help: # help, exitレベルの場合、インテント名を書かなくてもいける
+  - response.outputSpeech.ssml: <speak>技術書典、と言ってみてください。どうぞ！</speak>
+  - response.reprompt.outputSpeech.ssml: <speak>技術書典、と言ってみてください。どうぞ！</speak>
+- AMAZON.HelpIntent: # 検証したいリクエストの場合、レベルを下げて検証内容を書く
+  - response.outputSpeech.ssml: <speak>技術書典、と言ってみてください。どうぞ！</speak>
 - HelloWorldIntent:
-  - response.outputSpeech.ssml: <speak>ハローワールド</speak>
+  - response.outputSpeech.ssml: <speak>技術書典とは技術書の同人誌の祭典です。年に2回開催されますが、今年は豪華に3回も開催されます。ぜひ会場までおこしください！</speak>

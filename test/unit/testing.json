@@ -3,10 +3,6 @@
   "locale": "ja-JP",
   "trace": false,
   "jest": {
-    "silent": false,
-    "coveragePathIgnorePatterns": [
-      "<rootDir>/lambda/data",
-      "<rootDir>/lambda/custom/.*cook.*"
-    ]
+    "silent": false
   }
 }
